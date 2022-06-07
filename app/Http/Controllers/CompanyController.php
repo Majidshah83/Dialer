@@ -17,7 +17,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::latest()->paginate(5);
-        return view('companies.index',compact('companies'))
+        return view('superAdmin.companies.index',compact('companies'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -28,7 +28,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-          return view('companies.create');
+          return view('superAdmin.companies.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class CompanyController extends Controller
    $user->password=Hash::make($request->password);
    $user->company_id=$companyid;
    $user->save();
-        return redirect()->route('companies.index')
+        return redirect()->route('superAdmin.companies.index')
                         ->with('success','Company created successfully.');
     }
 
@@ -94,7 +94,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
        $companies=Company::find($id)->first();
-        return view('companies.edit',compact('companies'));
+        return view('superAdmin.companies.edit',compact('companies'));
     }
 
     /**

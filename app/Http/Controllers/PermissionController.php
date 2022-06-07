@@ -32,7 +32,7 @@ class PermissionController extends Controller
     {
         $data = Permission::orderBy('id','DESC')->paginate(5);
 
-        return view('permissions.index', compact('data'));
+        return view('admin.permissions.index', compact('data'));
     }
 
     /**
@@ -42,7 +42,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permissions.create');
+        return view('admin.permissions.create');
     }
 
     /**
@@ -59,7 +59,7 @@ class PermissionController extends Controller
 
         Permission::create(['name' => $request->input('name')]);
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('admin.permissions.index')
             ->with('success', 'Permission created successfully.');
     }
 
@@ -73,7 +73,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
 
-        return view('permissions.show', compact('permission'));
+        return view('admin.permissions.show', compact('permission'));
     }
 
     /**
@@ -86,7 +86,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
 
-        return view('permissions.edit', compact('permission'));
+        return view('admin.permissions.edit', compact('permission'));
     }
 
     /**
@@ -106,7 +106,7 @@ class PermissionController extends Controller
         $permission->name = $request->input('name');
         $permission->save();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('admin.permissions.index')
             ->with('success', 'Permission updated successfully.');
     }
 
@@ -120,7 +120,7 @@ class PermissionController extends Controller
     {
         Permission::find($id)->delete();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('admin.permissions.index')
             ->with('success', 'Permission deleted successfully');
     }
 }

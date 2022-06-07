@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
+
 @section('content')
 <div class="container">
     <div class="justify-content-center">
@@ -8,10 +9,10 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Roles
+            <div class="card-header">Permissions
                 @can('role-create')
                     <span class="float-right">
-                        <a class="btn btn-primary" href="{{ route('roles.create') }}">New Role</a>
+                        <a class="btn btn-primary" href="{{ route('permissions.create') }}">New Permission</a>
                     </span>
                 @endcan
             </div>
@@ -25,18 +26,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $key => $role)
-                       
+                        @foreach ($data as $key => $permission)
                             <tr>
-                                <td>{{ $role->id }}</td>
-                                <td>{{ $role->name }}</td>
+                                <td>{{ $permission->id }}</td>
+                                <td>{{ $permission->name }}</td>
                                 <td>
-                                    <a class="btn btn-success" href="{{ route('roles.show',$role->id) }}">Show</a>
+                                    <a class="btn btn-success" href="{{ route('permissions.show',$permission->id) }}">Show</a>
                                     @can('role-edit')
-                                        <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                                        <a class="btn btn-primary" href="{{ route('permissions.edit',$permission->id) }}">Edit</a>
                                     @endcan
                                     @can('role-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                        {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}
                                     @endcan
@@ -45,7 +45,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $data->render() }}
+                 {{$data->links('pagination::bootstrap-4')}}
             </div>
         </div>
     </div>

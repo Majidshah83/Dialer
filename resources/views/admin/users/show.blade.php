@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
 @section('content')
 <div class="container">
     <div class="justify-content-center">
@@ -8,21 +8,25 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Post
+            <div class="card-header">User
                 @can('role-create')
                     <span class="float-right">
-                        <a class="btn btn-primary" href="{{ route('posts.index') }}">Back</a>
+                        <a class="btn btn-primary" href="{{ route('users.index') }}">Back</a>
                     </span>
                 @endcan
             </div>
             <div class="card-body">
                 <div class="lead">
-                    <strong>Title:</strong>
-                    {{ $post->title }}
+                    <strong>Name:</strong>
+                    {{ $user->name }}
                 </div>
                 <div class="lead">
-                    <strong>Body:</strong>
-                    {{ $post->body }}
+                    <strong>Email:</strong>
+                    {{ $user->email }}
+                </div>
+                <div class="lead">
+                    <strong>Password:</strong>
+                    ********
                 </div>
             </div>
         </div>

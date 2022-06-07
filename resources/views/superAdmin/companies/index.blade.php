@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-
+@extends('admin.layouts.master')
 @section('content')
     <div class="container">
     <div class="justify-content-center">
@@ -65,8 +63,7 @@
 	    @endforeach
     </table>
 
-
-    {!!$companies->links() !!}
+     {{$companies->links('pagination::bootstrap-4')}}
 
 
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
 @section('content')
 <div class="container">
     <div class="justify-content-center">
@@ -34,7 +34,7 @@
 
                                     @if(!empty($user->getRoleNames()))
                                         @foreach($user->getRoleNames() as $val)
-                                      
+
                                             <label class="">{{ $val }}</label>
                                         @endforeach
                                     @endif
@@ -54,7 +54,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $data->render() }}
+                {{$data->links('pagination::bootstrap-4')}}
             </div>
         </div>
     </div>

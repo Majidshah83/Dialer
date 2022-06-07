@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
+
 @section('content')
 <div class="container">
     <div class="justify-content-center">
@@ -13,13 +14,13 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header">Create permission
+            <div class="card-header">Edit permission
                 <span class="float-right">
                     <a class="btn btn-primary" href="{{ route('permissions.index') }}">Permissions</a>
                 </span>
             </div>
             <div class="card-body">
-                {!! Form::open(array('route' => 'permissions.store','method'=>'POST')) !!}
+                {!! Form::model($permission, ['route' => ['permissions.update', $permission->id], 'method'=>'PATCH']) !!}
                     <div class="form-group">
                         <strong>Name:</strong>
                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}

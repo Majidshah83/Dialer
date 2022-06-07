@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('admin.layouts.master')
 @section('content')
 <div class="container">
-    <div class="justify-content-center">
+    <div class="justify-content-center"></div>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Opps!</strong> Something went wrong, please check below errors.<br><br>
